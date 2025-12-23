@@ -21,6 +21,10 @@ t_node *node_new(int value)
     return n;
 }
 
+
+
+
+
 // put a given node to the top of a stack
 // mini-step 1/2 for ops
 void stack_push(t_stack *s, t_node *n)
