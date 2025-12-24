@@ -1,5 +1,6 @@
 #include "push_swap.h"
 
+// initiate name latere???
 void stack_init(t_stack *s, char name)
 {
     s->top = NULL;
@@ -14,16 +15,36 @@ t_node *node_new(int value)
 
     n = malloc(sizeof(t_node));
     if (!n)
-        return NULL;
+        set_stderr_exit();
     n->value = value;
-    n->index = -1; 
     n->next = NULL;
     return n;
 }
 
+void stack_builder(t_stack *stack, int *int_list, int nint, char name)
+{
+    int i;
+    t_node *cur;
 
-
-
+    stack_init(stack, name);
+    i = 0;
+    if (nint== 0)
+        return;
+    stack->top = node_new(int_list[i]);
+    cur = stack->top;
+    stack->size++;
+    i++;
+    while (i < nint)
+    {
+        // build node with value
+        cur->next = node_new(int_list[i]);
+        cur = cur->next;
+        stack->size++;
+        // link node to stack
+        i++;
+    }
+    return;
+}
 
 // put a given node to the top of a stack
 // mini-step 1/2 for ops

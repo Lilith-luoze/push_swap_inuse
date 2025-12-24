@@ -7,7 +7,6 @@
 typedef struct s_node
 {
     int value;
-    int index;
     struct s_node *next;
 } t_node;
 
@@ -41,7 +40,7 @@ void stack_push(t_stack *s, t_node *n);
 t_node *stack_pop(t_stack *s);
 
 /*parse*/
-char **ft_free_split(char **ptr);
+void ft_free_split(char **ptr);
 char **ft_split(char const *s, char c);
 
 #endif
