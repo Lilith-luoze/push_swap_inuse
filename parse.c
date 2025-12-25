@@ -125,6 +125,7 @@ int *parse_integer_input(int argc, char **argv, int *out_nb_count)
             j++;
         }
         ft_free_split(split);
+        i++;
     }
     *out_nb_count = cnt_nb;
     return int_list;
