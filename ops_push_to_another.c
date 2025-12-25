@@ -1,28 +1,25 @@
 #include "push_swap.h"
+
 // internal func for pa/pb : push to a from b's top / push to b from a's top.
 // static - cannot be called else where
-static void push(t_stack *src, t_stack *dst)
+static void	push(t_stack *src, t_stack *dst)
 {
-    t_node *n;
+	t_node	*n;
 
-    if (src->size == 0)
-        return;
-    n = stack_pop(src);
-    stack_push(dst, n);
+	if (src->size == 0)
+		return ;
+	n = stack_pop(src);
+	stack_push(dst, n);
 }
 
-void    pa(t_stack *a, t_stack *b)
+void	pa(t_stack *a, t_stack *b)
 {
-    push(b, a);
-    write(1, "pa\n", 3);
+	push(b, a);
+	write(1, "pa\n", 3);
 }
 
-void    pb(t_stack *a, t_stack *b)
+void	pb(t_stack *a, t_stack *b)
 {
-    push(a, b);
-    write(1, "pb\n", 3);
+	push(a, b);
+	write(1, "pb\n", 3);
 }
-
-
-
-

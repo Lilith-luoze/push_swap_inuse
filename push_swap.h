@@ -44,7 +44,7 @@ void free_stack(t_stack *s);
 int is_sorted(t_stack *a);
 void stack_builder(t_stack *stack, int *int_list, int nint, char name);
 void normalize_values(int *int_list, int nint);
-void sort_big(t_stack *a, t_stack *b);
+void sort_big_radix(t_stack *a, t_stack *b);
 
 int arg_is_valid_number(char *s);
 void set_stderr_exit(void);

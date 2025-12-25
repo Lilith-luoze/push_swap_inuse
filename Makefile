@@ -13,7 +13,6 @@ SRC = main.c \
       ops_swap_upper.c \
       normalization.c \
       sort_big_radix.c \
-      sort_small.c \
       ft_bzero.c \
       ft_calloc.c \
       ft_split.c \

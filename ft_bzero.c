@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-
 // bzero : all be zero, bytes!
 void	ft_bzero(void *s, size_t n)
 {
