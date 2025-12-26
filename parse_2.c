@@ -6,7 +6,7 @@
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:20:36 by luozguo           #+#    #+#             */
-/*   Updated: 2025/12/26 15:21:33 by luozguo          ###   ########.fr       */
+/*   Updated: 2025/12/26 17:46:09 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,14 @@ void	set_stderr_exit(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
+}
+void fatal_exit(t_stack *a, t_stack *b, int *int_list)
+{
+    if (a)
+        free_stack(a);
+    if (b)
+        free_stack(b);
+    free(int_list);
+    write(2, "Error\n", 6);
+    exit(1);
 }

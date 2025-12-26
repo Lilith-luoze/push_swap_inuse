@@ -6,13 +6,14 @@
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:00:58 by luozguo           #+#    #+#             */
-/*   Updated: 2025/12/26 16:13:47 by luozguo          ###   ########.fr       */
+/*   Updated: 2025/12/26 17:32:13 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atolll(char *s)
+//parse:  free(int_list) , free what's there in it
+long	ft_atolll(char *s , int *int_list)
 {
 	long	res;
 	int		sign;
@@ -32,7 +33,7 @@ long	ft_atolll(char *s)
 	{
 		digit = s[i] - '0';
 		if (res > (LONG_MAX - digit) / 10)
-			set_stderr_exit();
+			pre_exit_parsing(NULL , int_list);
 		res = res * 10 + digit;
 		i++;
 	}
@@ -59,7 +60,7 @@ static int	parse_one_int_element(char *token, int *int_list, int *cnt_nb)
 
 	if (!arg_is_valid_number(token))
 		return 0;
-	v = ft_atolll(token);
+	v = ft_atolll(token , int_list);
 	if (v < INT_MIN || v > INT_MAX)
 		return 0;
 	if (has_duplicate(int_list, *cnt_nb, (int)v))
@@ -70,7 +71,7 @@ static int	parse_one_int_element(char *token, int *int_list, int *cnt_nb)
 	return 1;
 }
 
-void pre_exit(char **split, int *int_list)
+void pre_exit_parsing(char **split, int *int_list)
 {
     ft_free_split(split);
     free(int_list);
@@ -88,18 +89,18 @@ int	*parse_integer_input(int argc, char **argv, int *out_nb_count)
 
 	int_list = malloc(sizeof(int) * 1000);
 	if (!int_list)
-		pre_exit(NULL, NULL);
+		pre_exit_parsing(NULL, NULL);
 	cnt_nb = 0;
 	i = 1;
 	while (i < argc)
 	{
 		split = ft_split(argv[i], ' ');
 		if (!split || !split[0])
-			pre_exit(split, int_list);
+			pre_exit_parsing(split, int_list);
 		j = 0;
 		while (split[j])
 			if (!parse_one_int_element(split[j++], int_list, &cnt_nb))
-				pre_exit(split, int_list);
+				pre_exit_parsing(split, int_list);
 		ft_free_split(split);
 		i++;
 	}

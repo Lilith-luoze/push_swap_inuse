@@ -6,18 +6,18 @@
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:01:03 by luozguo           #+#    #+#             */
-/*   Updated: 2025/12/26 16:16:30 by luozguo          ###   ########.fr       */
+/*   Updated: 2025/12/26 17:29:40 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // naive selection sort - compare each to all the others
-static void	sort_int_array(int *arr, int n)
+static void sort_int_array(int *arr, int n)
 {
-	int	i;
-	int	j;
-	int	tmp;
+	int i;
+	int j;
+	int tmp;
 
 	i = 0;
 	while (i < n - 1)
@@ -37,9 +37,9 @@ static void	sort_int_array(int *arr, int n)
 	}
 }
 
-static int	find_index(int *sorted, int n, int value)
+static int find_index(int *sorted, int n, int value)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < n)
@@ -51,14 +51,14 @@ static int	find_index(int *sorted, int n, int value)
 	return (-1);
 }
 
-void	normalize_values(int *int_list, int nint)
+void normalize_values(int *int_list, int nint)
 {
-	int	*sorted;
-	int	i;
+	int *sorted;
+	int i;
 
 	sorted = malloc(sizeof(int) * nint);
 	if (!sorted)
-		set_stderr_exit();
+		pre_exit_parsing(NULL, int_list);
 	i = 0;
 	while (i < nint)
 	{

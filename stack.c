@@ -6,13 +6,14 @@
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:00:24 by luozguo           #+#    #+#             */
-/*   Updated: 2025/12/26 15:18:44 by luozguo          ###   ########.fr       */
+/*   Updated: 2025/12/26 17:36:20 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_init(t_stack *s, char name)
+// free(int_list) , free(stack created)
+void stack_init(t_stack *s, char name)
 {
 	s->top = NULL;
 	s->size = 0;
@@ -20,44 +21,53 @@ void	stack_init(t_stack *s, char name)
 }
 
 // create a new node with a given value
-t_node	*node_new(int value)
+t_node *node_new(int value)
 {
-	t_node	*n;
+	t_node *n;
 
 	n = malloc(sizeof(t_node));
 	if (!n)
-		set_stderr_exit();
+		return NULL;
 	n->value = value;
 	n->next = NULL;
 	return (n);
 }
 
-void	stack_builder(t_stack *stack, int *int_list, int nint, char name)
+void stack_builder(t_stack *stack, int *int_list, int nint, char name)
 {
-	int		i;
-	t_node	*cur;
+	int i;
+	t_node *prev;
+	t_node *new;
 
 	stack_init(stack, name);
 	i = 0;
-	if (nint == 0)
-		return ;
-	stack->top = node_new(int_list[i]);
-	cur = stack->top;
-	stack->size++;
-	i++;
+	prev = NULL;
 	while (i < nint)
 	{
-		cur->next = node_new(int_list[i]);
-		cur = cur->next;
+		new = node_new(int_list[i]);
+		if (!new)
+			pre_exit_stack(stack , int_list);
+		if (!prev)
+			stack->top = new;
+		else
+			prev->next = new;
+		prev = new;
 		stack->size++;
 		i++;
 	}
-	return ;
 }
 
-void	free_stack(t_stack *s)
+void pre_exit_stack(t_stack *s , int* int_list)
 {
-	t_node	*tmp;
+	free_stack(s);
+	free(int_list);
+	set_stderr_exit();
+}
+
+// stop when null detected
+void free_stack(t_stack *s)
+{
+	t_node *tmp;
 
 	while (s->top)
 	{
@@ -67,9 +77,9 @@ void	free_stack(t_stack *s)
 	}
 }
 
-int	is_stack_sorted(t_stack *s)
+int is_stack_sorted(t_stack *s)
 {
-	t_node	*cur;
+	t_node *cur;
 
 	if (s->size <= 1)
 		return (1);

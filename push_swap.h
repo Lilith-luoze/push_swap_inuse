@@ -6,7 +6,7 @@
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:00:46 by luozguo           #+#    #+#             */
-/*   Updated: 2025/12/26 16:28:08 by luozguo          ###   ########.fr       */
+/*   Updated: 2025/12/26 17:29:40 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void sort_big_radix(t_stack *a, t_stack *b);
 
 int arg_is_valid_number(char *s);
 void set_stderr_exit(void);
+void pre_exit_parsing(char **split, int *int_list);
 long ft_atolll(char *s);
 int has_duplicate(int *arr, int size, int value);
 int *parse_integer_input(int argc, char **argv,
