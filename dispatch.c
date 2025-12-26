@@ -21,4 +21,3 @@ void	dispatch_sort(t_stack *a, t_stack *b)
 	sort_big_radix(a, b);
 	return ;
 }
-

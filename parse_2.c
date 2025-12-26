@@ -6,11 +6,25 @@
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:20:36 by luozguo           #+#    #+#             */
-/*   Updated: 2025/12/26 18:05:25 by luozguo          ###   ########.fr       */
+/*   Updated: 2025/12/26 18:37:18 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	has_duplicate(int *arr, int size, int value)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (arr[i] == value)
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 // free a NULL terminated double pointer
 void	ft_free_split(char **split)
@@ -48,13 +62,13 @@ int	arg_is_valid_number(char *s)
 	return (1);
 }
 
-void fatal_exit(t_stack *a, t_stack *b, int *int_list)
+void	fatal_exit(t_stack *a, t_stack *b, int *int_list)
 {
-    if (a)
-        free_stack(a);
-    if (b)
-        free_stack(b);
-    free(int_list);
-    write(2, "Error\n", 6);
-    exit(1);
+	if (a)
+		free_stack(a);
+	if (b)
+		free_stack(b);
+	free(int_list);
+	write(2, "Error\n", 6);
+	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:00:58 by luozguo           #+#    #+#             */
-/*   Updated: 2025/12/26 18:19:44 by luozguo          ###   ########.fr       */
+/*   Updated: 2025/12/26 18:38:11 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,6 @@ long	ft_atolll(char *s, int *int_list)
 		i++;
 	}
 	return (res * sign);
-}
-
-int	has_duplicate(int *arr, int size, int value)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (arr[i] == value)
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 static int	parse_one_int_element(char *token, int *int_list, int *cnt_nb)
@@ -101,8 +87,6 @@ int	*parse_integer_input(int argc, char **argv, int *out_nb_count)
 	int		*int_list;
 	int		cnt_nb;
 	int		i;
-	char	**split;
-	int		j;
 
 	int_list = malloc(sizeof(int) * 1000);
 	if (!int_list)
